@@ -22,6 +22,7 @@
   "homepage": "https://github.com/amandajoelle/Backend#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "env-var": "^7.0.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "jsontoxml": "^1.0.1",

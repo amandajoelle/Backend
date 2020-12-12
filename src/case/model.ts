@@ -20,8 +20,42 @@ const getCase = (case_id: number) => {
     return Case.findByPk(case_id);
 };
 
+const updateCase = (caseId: number, medical_case) => {
+    return Case.update(
+        {
+            ...medical_case
+        },
+        {
+            where: {
+                case_id: caseId
+            }
+        }
+    );
+};
+
+const deleteCase = (caseId: number) => {
+    return Case.destroy(
+        {
+            where: {
+                case_id: caseId
+            }
+        }
+    );
+};
+
+const createCase = (medicalCase) => {
+    return Case.create(
+        {
+            ...medicalCase
+        }
+    );
+};
+
 export {
     getAllDoneCases,
     getAllUndoneCases,
-    getCase
+    getCase,
+    updateCase,
+    deleteCase,
+    createCase
 };

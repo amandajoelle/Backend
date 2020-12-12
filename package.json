@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "dotenv -e .env -- nodemon -e ts src/index.ts",
+    "database": "sqlite3 ./database/cirs.db -init ./database/cirs-database.sql .quit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,14 @@
   },
   "homepage": "https://github.com/amandajoelle/Backend#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jsontoxml": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "sequelize": "^6.3.5",
+    "sqlite": "^4.0.18",
+    "sqlite3": "^5.0.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },

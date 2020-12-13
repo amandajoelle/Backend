@@ -8,7 +8,7 @@ const getAllDoneCases = () => {
     });
 };
 
-const getAllUndoneCases = (userId: number) => {
+const getAllIncompleteCases = (userId: number) => {
     return Case.findAll({
         where: {
             [Op.or]: [{ editor: null }, { editor: userId }]
@@ -16,8 +16,8 @@ const getAllUndoneCases = (userId: number) => {
     })
 };
 
-const getCase = (case_id: number) => {
-    return Case.findByPk(case_id);
+const getCase = (caseId: number) => {
+    return Case.findByPk(caseId);
 };
 
 const updateCase = (caseId: number, medical_case) => {
@@ -53,7 +53,7 @@ const createCase = (medicalCase) => {
 
 export {
     getAllDoneCases,
-    getAllUndoneCases,
+    getAllIncompleteCases,
     getCase,
     updateCase,
     deleteCase,

@@ -1,7 +1,7 @@
 import * as jsonXml from 'jsontoxml';
 import {
     getAllDoneCases,
-    getAllUndoneCases,
+    getAllIncompleteCases,
     getCase,
     updateCase
 } from './model';
@@ -25,10 +25,9 @@ const listDoneAction = (request, response): void => {
     );
 };
 
-const listUndoneAction = (request, response): void => {
-    // TODO: change request.params.id to request.user.id when jwt is done
-    const userId = Number(request.params.id);
-    getAllUndoneCases(userId).then(
+const listIncompleteAction = (request, response): void => {
+    const userId = Number(request.user);
+    getAllIncompleteCases(userId).then(
         cases => {
             response.format({
                 xml() {
@@ -73,6 +72,6 @@ const updateCaseAction =(request, response) => {
 
 export {
     listDoneAction,
-    listUndoneAction,
+    listIncompleteAction,
     oneCaseAction
 };

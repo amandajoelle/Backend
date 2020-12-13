@@ -1,15 +1,19 @@
 import { Router } from 'express';
 import {
     listDoneAction,
-    listUndoneAction,
+    listIncompleteAction,
     oneCaseAction
 } from './controller';
 
 const caseRouter = new Router();
+const safeCaseRouter = new Router();
 
 caseRouter.get('/done/', listDoneAction);
-// TODO: remove :id from undone
-caseRouter.get('/undone/:id', listUndoneAction);
 caseRouter.get('/:id', oneCaseAction);
 
-export { caseRouter };
+safeCaseRouter.get('/incomplete/', listIncompleteAction);
+
+export {
+    caseRouter,
+    safeCaseRouter
+};

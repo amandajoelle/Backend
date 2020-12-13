@@ -9,7 +9,7 @@ const getEmployeeByEmail = (email: string) => {
     return Employee.findOne({ where: { email: email } });
 };
 
-const getEmployeeById = (employeeId: number) => {
+const getEmployeeById = (employeeId: string) => {
     return Employee.findByPk(employeeId);
 };
 

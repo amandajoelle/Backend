@@ -26,7 +26,7 @@ const listDoneAction = (request, response): void => {
 };
 
 const listIncompleteAction = (request, response): void => {
-    const userId = Number(request.user);
+    const userId = request.user;
     getAllIncompleteCases(userId).then(
         cases => {
             response.format({
@@ -46,7 +46,7 @@ const listIncompleteAction = (request, response): void => {
 };
 
 const oneCaseAction = (request, response) => {
-    const caseId = Number(request.params.id);
+    const caseId = request.params.id;
     getCase(caseId).then(
         c => {
             response.format({
@@ -66,7 +66,7 @@ const oneCaseAction = (request, response) => {
 };
 
 const updateCaseAction =(request, response) => {
-    const caseId = Number(request.params.id);
+    const caseId = request.params.id;
     const medicalCase = {};
 };
 

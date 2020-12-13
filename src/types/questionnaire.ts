@@ -1,5 +1,5 @@
-interface Questionnaire {
-    questionId?: number;
+export interface Questionnaire {
+    questionId?: string;
     expertise: string;
     ageGroup: string;
     sex: string;

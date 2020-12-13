@@ -10,8 +10,9 @@ const Case = sequelize.define(
     'Case',
     {
         case_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
         },
         title: {
             type: DataTypes.TEXT
@@ -20,19 +21,19 @@ const Case = sequelize.define(
             type: DataTypes.TEXT
         },
         feedback: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: 'Feedback'
         },
         questionnaire: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: 'Questionnaire'
         },
         classification: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: 'Classification'
         },
         editor: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: 'Employee'
         }
     },
@@ -46,8 +47,9 @@ const Questionnaire = sequelize.define(
     'Questionnaire',
     {
         question_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
         },
         expertise: {
             type: DataTypes.TEXT
@@ -87,8 +89,9 @@ const Employee = sequelize.define(
     'Employee',
     {
         employee_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
         },
         email: {
             type: DataTypes.TEXT,
@@ -114,8 +117,9 @@ const Classification = sequelize.define(
     'Classification',
     {
         class_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
         },
         category: {
             type: DataTypes.TEXT
@@ -131,8 +135,9 @@ const Feedback = sequelize.define(
     'Feedback',
     {
         feedback_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
         },
         comment: {
             type: DataTypes.TEXT
@@ -151,18 +156,19 @@ const Factor = sequelize.define(
     'Factor',
     {
         factor_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
         },
         content: {
             type: DataTypes.TEXT
         },
         feedback: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: 'Feedback'
         },
         questionnaire: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: 'Questionnaire'
         }
     },

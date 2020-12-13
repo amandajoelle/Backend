@@ -1,5 +1,5 @@
-interface MedicalCase {
-    caseId?: number;
+export interface MedicalCase {
+    caseId?: string;
     title?: string;
     status: string;
     feedback?: number;

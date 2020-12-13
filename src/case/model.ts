@@ -8,7 +8,7 @@ const getAllDoneCases = () => {
     });
 };
 
-const getAllIncompleteCases = (userId: number) => {
+const getAllIncompleteCases = (userId: string) => {
     return Case.findAll({
         where: {
             [Op.or]: [{ editor: null }, { editor: userId }]
@@ -16,11 +16,11 @@ const getAllIncompleteCases = (userId: number) => {
     })
 };
 
-const getCase = (caseId: number) => {
+const getCase = (caseId: string) => {
     return Case.findByPk(caseId);
 };
 
-const updateCase = (caseId: number, medical_case) => {
+const updateCase = (caseId: string, medical_case) => {
     return Case.update(
         {
             ...medical_case
@@ -33,7 +33,7 @@ const updateCase = (caseId: number, medical_case) => {
     );
 };
 
-const deleteCase = (caseId: number) => {
+const deleteCase = (caseId: string) => {
     return Case.destroy(
         {
             where: {
@@ -44,6 +44,7 @@ const deleteCase = (caseId: number) => {
 };
 
 const createCase = (medicalCase) => {
+    if (medicalCase.caseId || medicalCase.caseId === undefined) { delete medicalCase.caseId; }
     return Case.create(
         {
             ...medicalCase

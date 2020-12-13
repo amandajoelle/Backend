@@ -1,4 +1,4 @@
-interface Classification {
-    classId?: number;
+export interface Classification {
+    classId?: string;
     category: string;
 }

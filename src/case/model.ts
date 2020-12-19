@@ -1,5 +1,6 @@
 import { Case } from '../data_models/model';
 import { Op } from 'sequelize';
+import { UpdateMedicalCase } from '../types/medical_case';
 
 
 const getAllDoneCases = () => {
@@ -20,15 +21,16 @@ const getCase = (caseId: string) => {
     return Case.findByPk(caseId);
 };
 
-const updateCase = (caseId: string, medical_case) => {
+const updateCase = (caseId: string, medicalCase: UpdateMedicalCase, fields: string[]) => {
     return Case.update(
         {
-            ...medical_case
+            ...medicalCase
         },
         {
             where: {
                 case_id: caseId
-            }
+            },
+            fields
         }
     );
 };

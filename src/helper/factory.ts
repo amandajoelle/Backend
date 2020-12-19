@@ -1,5 +1,6 @@
 import { Questionnaire } from '../types/questionnaire';
 import { Factor } from '../types/factor';
+import { Feedback } from '../types/feedback';
 
 export const questionnaireFactory = (request): Questionnaire => {
     return {
@@ -29,4 +30,11 @@ export const factorsFactory = (request): Factor[] => {
         factors.push(factor);
     });
     return factors;
+};
+
+export const feedbackFactory = (request): Feedback => {
+    return {
+        comment: request.body?.comment,
+        solution: request.body?.solution
+    };
 };

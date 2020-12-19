@@ -36,7 +36,6 @@ const createQuestionnaireAction = (request, response) => {
 
     postQuestionnaire(newQuestionnaire).then(
         questionnaire => {
-            console.log('New questionnaire: ', questionnaire);
             const newCase: MedicalCase = {
                 status: 'unbearbeitet',
                 questionnaire: questionnaire['question_id']
@@ -45,8 +44,6 @@ const createQuestionnaireAction = (request, response) => {
                 factor.questionnaire = questionnaire['question_id'];
                 postFactor(factor).then(f => console.log('New Factor: ', f));
             });
-            console.log('New factors created');
-            console.log('New case: ', JSON.stringify(newCase));
             createCase(newCase).then(c => console.log('New case: ', c));
 
             response.format({

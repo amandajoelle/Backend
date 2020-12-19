@@ -1,6 +1,7 @@
 import { Questionnaire } from '../types/questionnaire';
 import { Factor } from '../types/factor';
 import { Feedback } from '../types/feedback';
+import { Classification } from '../types/classification';
 
 export const questionnaireFactory = (request): Questionnaire => {
     return {
@@ -19,8 +20,8 @@ export const questionnaireFactory = (request): Questionnaire => {
 export const factorFactory = (request): Factor => {
     return {
         content: request.body.content,
-        feedback: request.body.feedback ? request.body.feedback : null,
-        questionnaire: request.body.questionnaire ? request.body.questionnaire : null
+        feedback: request.body?.feedback,
+        questionnaire: request.body?.questionnaire
     };
 };
 
@@ -36,5 +37,11 @@ export const feedbackFactory = (request): Feedback => {
     return {
         comment: request.body?.comment,
         solution: request.body?.solution
+    };
+};
+
+export const classificationFactory = (request): Classification => {
+    return {
+        category: request.body?.category
     };
 };

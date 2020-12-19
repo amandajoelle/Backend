@@ -42,9 +42,9 @@ const createQuestionnaireAction = (request, response) => {
             };
             newFactors.forEach(factor => {
                 factor.questionnaire = questionnaire['question_id'];
-                postFactor(factor).then(f => console.log('New Factor: ', f));
+                postFactor(factor).then(f => console.log('Created new factor'));
             });
-            createCase(newCase).then(c => console.log('New case: ', c));
+            createCase(newCase).then(c => console.log('Created new case'));
 
             response.format({
                 xml() {

@@ -69,7 +69,7 @@ INSERT INTO Factor(factor_id, content, questionnaire) VALUES("3","Persönliche F
 INSERT INTO Factor(factor_id, content, questionnaire) VALUES("4","Organisation (zu wenig Personal, Standards, Arbeitsbelastung, Abläufe etc.)","2");
 INSERT INTO Factor(factor_id, content, questionnaire) VALUES("5","Medikation (Medikamente beteiligt?)","2");
 INSERT INTO Questionnaire(question_id, expertise,age_group,sex, location, event,result,reasons,frequency,reporter)
-VALUES("2","Psychiatrie","41-50","männlich","Krankenhaus","Patient erhielt versehentlich 1 Kps Dekristol 20000 IE (Vitamin D)","nichts passiert","Unkonzentriertheit, Überlastung",
+VALUES("3","Psychiatrie","41-50","männlich","Krankenhaus","Patient erhielt versehentlich 1 Kps Dekristol 20000 IE (Vitamin D)","nichts passiert","Unkonzentriertheit, Überlastung",
 "nicht anwendbar","Pflege-, Praxispersonal");
 INSERT INTO Factor(factor_id, content, questionnaire) VALUES("6","Organisation (zu wenig Personal, Standards, Arbeitsbelastung, Abläufe etc.)","3");
 INSERT INTO Factor(factor_id, content, questionnaire) VALUES("7", "Medikation (Medikamente beteiligt?)","3");

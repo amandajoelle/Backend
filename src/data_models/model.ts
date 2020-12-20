@@ -1,8 +1,9 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize, DataTypes, Dialect } from 'sequelize';
+import { SQL_DIALECT, STORAGE } from '../config/env.config';
 
 const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: 'database/cirs.db',
+    dialect: SQL_DIALECT as Dialect,
+    storage: STORAGE,
 });
 
 // Models of Tables

@@ -9,7 +9,7 @@ import { factorRouter } from './factor';
 import { feedbackRouter, safeFeedbackRouter } from './feedback';
 import { classificationRouter, safeClassificationRouter } from './classification';
 
-const app = express();
+export const app = express();
 
 app.use(json());
 

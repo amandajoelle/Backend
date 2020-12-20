@@ -1,4 +1,12 @@
 import * as request from 'supertest';
-import { app } from '../src';
+import { createServer } from '../src/server';
 
-describe('factor', () => {});
+const app = createServer();
+
+describe('factor', () => {
+    // TODO: write tests
+
+    afterAll(() => {
+        app.close();
+    })
+});

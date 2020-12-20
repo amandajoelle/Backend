@@ -1,3 +1,10 @@
+DROP TABLE Classification;
+DROP TABLE Feedback;
+DROP TABLE Employee;
+DROP TABLE Questionnaire;
+DROP TABLE Factor;
+DROP TABLE Medical_Case;
+
 CREATE TABLE Classification (
     class_id TEXT PRIMARY KEY NOT NULL,
     category TEXT

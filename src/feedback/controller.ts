@@ -42,10 +42,10 @@ const postFeedbackAction = (request, response): void => {
                 caseId,
                 { feedback: feedback['feedback_id'], editor: userId },
                 ['feedback', 'editor'])
-                .then(c => console.log('Case has been updated'));
+                .then(c => c);
             newFactors.forEach(factor => {
                 factor.feedback = feedback['feedback_id'];
-                postFactor(factor).then(f => console.log('Created new factor'));
+                postFactor(factor).then(f => f);
             });
             response.format({
                 xml() {

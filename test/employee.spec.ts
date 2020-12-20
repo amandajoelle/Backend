@@ -1,5 +1,7 @@
 import * as request from 'supertest';
-import { app } from '../src';
+import { createServer } from '../src/server';
+
+const app = createServer();
 
 describe('employee', () => {
     it('should login successfully', async () => {
@@ -9,15 +11,19 @@ describe('employee', () => {
                 email: 'Mueller@cirs.de',
                 password: '123456789'
             })
-            .set('Accept', 'application/json')
-            .expect(200);
+            .set('Accept', 'application/json');
+        expect(response.status).toBe(200);
         expect(response.body).toMatchObject({ token: expect.any(String) });
     })
 
-    it('should fail to login', () => {
-        request(app)
+    it('should fail to login', async () => {
+        const response = await request(app)
             .post('/login/')
-            .set('Accept', 'application/json')
-            .expect(404);
+            .set('Accept', 'application/json');
+        expect(response.status).toBe(404);
+    })
+
+    afterAll(() => {
+        app.close();
     })
 });

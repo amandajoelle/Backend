@@ -4,3 +4,4 @@ lib
 .env
 test.env
 database/cirs.db
+database/cirs_test.db

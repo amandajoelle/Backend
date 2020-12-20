@@ -1,9 +1,9 @@
-import { Feedback } from '../data_models/model';
+import { Factor, Feedback } from '../data_models/model';
 import { Op } from 'sequelize';
 import { Feedback as FeedbackInterface } from '../types/feedback';
 
 const getFeedback = (feedbackId: string) => {
-    return Feedback.findByPk(feedbackId);
+    return Feedback.findByPk(feedbackId, { include: { model: Factor } });
 };
 
 const createFeedback = (feedback: FeedbackInterface) => {

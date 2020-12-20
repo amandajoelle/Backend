@@ -195,15 +195,15 @@ Case.belongsTo(Classification);
 // Relation between Medical_Case and Feedback
 Feedback.hasOne(Case);
 Case.belongsTo(Feedback);
+*/
 
-// Relation between Questionnaire and Factor
-Questionnaire.hasMany(Factor);
-Factor.belongsTo(Questionnaire);
+// Relation between Questionnaire and Factor, for eager fetching
+Questionnaire.hasMany(Factor, { foreignKey: { name: 'questionnaire' } });
+Factor.belongsTo(Questionnaire, { foreignKey: { name: 'questionnaire' } });
 
 // Relation between Feedback and Factor
-Feedback.hasMany(Factor);
-Factor.belongsTo(Feedback);
-*/
+Feedback.hasMany(Factor, { foreignKey: { name: 'feedback'} });
+Factor.belongsTo(Feedback, { foreignKey: { name: 'feedback' } });
 
 export {
     Case,

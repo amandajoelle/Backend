@@ -5,6 +5,7 @@ import {
     getCase,
     updateCase
 } from './model';
+import { caseFactory } from '../helper/factory';
 
 const listDoneAction = (request, response): void => {
     getAllDoneCases().then(
@@ -67,11 +68,31 @@ const oneCaseAction = (request, response) => {
 
 const updateCaseAction =(request, response) => {
     const caseId = request.params.id;
-    const medicalCase = {};
+    const userId = request.user;
+    const medicalCase = caseFactory(request);
+    medicalCase.editor = userId;
+
+    updateCase(caseId, medicalCase, Object.keys(medicalCase)).then(
+        c => {
+            response.format({
+                xml() {
+                    response.send(jsonXml({ c }));
+                },
+                json() {
+                    response.json(c);
+                },
+                default() {
+                    response.json(c);
+                }
+            });
+        },
+    error => response.status(500).json(error)
+    );
 };
 
 export {
     listDoneAction,
     listIncompleteAction,
-    oneCaseAction
+    oneCaseAction,
+    updateCaseAction
 };

@@ -2,6 +2,7 @@ import { Questionnaire } from '../types/questionnaire';
 import { Factor } from '../types/factor';
 import { Feedback } from '../types/feedback';
 import { Classification } from '../types/classification';
+import { MedicalCase } from '../types/medical_case';
 
 export const questionnaireFactory = (request): Questionnaire => {
     return {
@@ -45,3 +46,15 @@ export const classificationFactory = (request): Classification => {
         category: request.body?.category
     };
 };
+
+export const caseFactory = (request): MedicalCase => {
+    return {
+        caseId: request.body?.caseId,
+        title: request.body?.title,
+        status: request.body?.status,
+        feedback: request.body?.feedback,
+        questionnaire: request.body?.questionnaire,
+        classification: request.body?.classification,
+        editor: request.body?.editor
+    };
+}

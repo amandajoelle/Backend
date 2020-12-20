@@ -180,22 +180,20 @@ const Factor = sequelize.define(
 
 // Relations
 // Relation between Medical_Case and Questionnaire
-/*
-Questionnaire.hasOne(Case, { foreignKey: 'questionnaire' });
-Case.belongsTo(Questionnaire);
+Questionnaire.hasOne(Case, { foreignKey: { name: 'questionnaire' } });
+Case.belongsTo(Questionnaire, { foreignKey: { name: 'questionnaire' } });
 
 // Relation between Medical_Case and Employee
-Employee.hasMany(Case, { foreignKey: 'editor' });
-Case.belongsTo(Employee);
+Employee.hasMany(Case, { foreignKey: { name: 'editor' } });
+Case.belongsTo(Employee, { foreignKey: { name: 'editor' } });
 
 // Relation between Medical_Case and Classification
-Classification.hasMany(Case);
-Case.belongsTo(Classification);
+Classification.hasMany(Case, { foreignKey: { name: 'classification' } });
+Case.belongsTo(Classification, { foreignKey: { name: 'classification' } });
 
 // Relation between Medical_Case and Feedback
-Feedback.hasOne(Case);
-Case.belongsTo(Feedback);
-*/
+Feedback.hasOne(Case, { foreignKey: { name: 'feedback' } });
+Case.belongsTo(Feedback, { foreignKey: { name: 'feedback' } });
 
 // Relation between Questionnaire and Factor, for eager fetching
 Questionnaire.hasMany(Factor, { foreignKey: { name: 'questionnaire' } });

@@ -1,14 +1,14 @@
 import * as jsonXml from 'jsontoxml';
 import {
     getQuestionnaire,
-    postQuestionnaire
+    createQuestionnaire
 } from './model';
 import { Questionnaire } from '../types/questionnaire';
 import { MedicalCase } from '../types/medical_case';
 import { createCase } from '../case/model';
 import {factorsFactory, questionnaireFactory} from '../helper/factory';
 import {Factor} from "../types/factor";
-import {postFactor} from "../factor/model";
+import {createFactor} from "../factor/model";
 
 const getOneQuestionnaireAction = (request, response) => {
     const questionnaireId = request.params.id;
@@ -34,7 +34,7 @@ const createQuestionnaireAction = (request, response) => {
     const newQuestionnaire: Questionnaire = questionnaireFactory(request);
     const newFactors: Factor[] = factorsFactory(request);
 
-    postQuestionnaire(newQuestionnaire).then(
+    createQuestionnaire(newQuestionnaire).then(
         questionnaire => {
             const newCase: MedicalCase = {
                 status: 'unbearbeitet',
@@ -42,7 +42,7 @@ const createQuestionnaireAction = (request, response) => {
             };
             newFactors.forEach(factor => {
                 factor.questionnaire = questionnaire['question_id'];
-                postFactor(factor).then(f => f);
+                createFactor(factor).then(f => f);
             });
             createCase(newCase).then(c => c);
 

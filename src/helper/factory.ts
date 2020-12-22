@@ -28,7 +28,7 @@ export const factorFactory = (request): Factor => {
 
 export const factorsFactory = (request): Factor[] => {
     const factors: Factor[] = [];
-    request.body.factors.forEach(factor => {
+    request.body?.factors.forEach(factor => {
         factors.push(factor);
     });
     return factors;

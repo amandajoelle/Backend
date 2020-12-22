@@ -1,6 +1,6 @@
 import { Case } from '../data_models/model';
 import { Op } from 'sequelize';
-import { UpdateMedicalCase } from '../types/medical_case';
+import { MedicalCase, UpdateMedicalCase } from '../types/medical_case';
 
 
 const getAllDoneCases = () => {
@@ -45,7 +45,7 @@ const deleteCase = (caseId: string) => {
     );
 };
 
-const createCase = (medicalCase) => {
+const createCase = (medicalCase: MedicalCase) => {
     if (medicalCase.caseId || medicalCase.caseId === undefined) { delete medicalCase.caseId; }
     return Case.create(
         {

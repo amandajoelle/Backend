@@ -39,7 +39,7 @@ const postClassificationAction = (request, response): void => {
                 caseId,
                 { classification: classification['class_id'] },
                 ['classification'])
-                .then(c => console.log('Case has been updated'));
+                .then(c => c);
             response.format({
                 xml() {
                     response.send(jsonXml({ classification }));

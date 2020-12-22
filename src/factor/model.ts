@@ -18,7 +18,7 @@ const getFactorsOfFeedback = (feedbackId: string) => {
     });
 };
 
-const postFactor = (factor: F) => {
+const createFactor = (factor: F) => {
     if (factor.factorId || factor.factorId === undefined) { delete factor.factorId; }
     return Factor.create({ ...factor });
 };
@@ -27,5 +27,5 @@ export {
     getFactor,
     getFactorsOfFeedback,
     getFactorsOfQuestionnaire,
-    postFactor
+    createFactor
 };

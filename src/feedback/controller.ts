@@ -8,7 +8,7 @@ import { factorsFactory, feedbackFactory } from '../helper/factory';
 import { Feedback } from '../types/feedback';
 import { Factor } from '../types/factor';
 import { updateCase } from '../case/model';
-import { postFactor } from '../factor/model';
+import { createFactor } from '../factor/model';
 
 const getOneFeedbackAction = (request, response): void => {
     const feedbackId = request.params.id;
@@ -45,7 +45,7 @@ const postFeedbackAction = (request, response): void => {
                 .then(c => c);
             newFactors.forEach(factor => {
                 factor.feedback = feedback['feedback_id'];
-                postFactor(factor).then(f => f);
+                createFactor(factor).then(f => f);
             });
             response.format({
                 xml() {

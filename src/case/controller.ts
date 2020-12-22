@@ -7,6 +7,11 @@ import {
 } from './model';
 import { caseFactory } from '../helper/factory';
 
+/**
+ *
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const listDoneAction = (request, response): void => {
     getAllDoneCases().then(
         cases => {
@@ -46,7 +51,7 @@ const listIncompleteAction = (request, response): void => {
     );
 };
 
-const oneCaseAction = (request, response) => {
+const getCaseAction = (request, response) => {
     const caseId = request.params.id;
     getCase(caseId).then(
         c => {
@@ -93,6 +98,6 @@ const updateCaseAction =(request, response) => {
 export {
     listDoneAction,
     listIncompleteAction,
-    oneCaseAction,
+    getCaseAction,
     updateCaseAction
 };

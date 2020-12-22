@@ -2,14 +2,19 @@ import * as express from 'express';
 import * as expressJwt from 'express-jwt';
 import * as morgen from 'morgan';
 import { json } from 'body-parser';
-import { authRouter } from "./login/login";
-import { caseRouter, safeCaseRouter } from "./case";
-import { TOKEN_SECRET } from "./config/env.config";
-import { questionnaireRouter } from "./questionnaire";
-import { factorRouter } from "./factor";
-import { feedbackRouter, safeFeedbackRouter } from "./feedback";
-import { classificationRouter, safeClassificationRouter } from "./classification";
+import { authRouter } from './login/login';
+import { caseRouter, safeCaseRouter } from './case';
+import { TOKEN_SECRET } from './config/env.config';
+import { questionnaireRouter } from './questionnaire';
+import { factorRouter } from './factor';
+import { feedbackRouter, safeFeedbackRouter } from './feedback';
+import { classificationRouter, safeClassificationRouter } from './classification';
 
+/**
+ * Function to create an express server
+ * with all routes.
+ * @return app as express
+ */
 export const createServer = () => {
     const app = express();
 

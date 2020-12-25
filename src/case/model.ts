@@ -17,7 +17,7 @@ const getAllDoneCases = (): Promise<Model[]> => {
  * Finds and returns all medical cases that have
  * no editor or is edited by the user | employee
  * @param userId, the id of the user | employee. Id must be a string
- * @return Promise<Model[]>
+ * @returns Promise<Model[]>
  */
 const getAllIncompleteCases = (userId: string): Promise<Model[]> => {
     return Case.findAll({
@@ -28,9 +28,10 @@ const getAllIncompleteCases = (userId: string): Promise<Model[]> => {
 };
 
 /**
- * Finds and returns the medical case the specified id
+ * Finds and returns the medical case with the specified id or
+ * null if it is not found
  * @param caseId, the id of the case. Id must be a string
- * @return Promise<Model | null>
+ * @returns Promise<Model | null>
  */
 const getCase = (caseId: string): Promise<Model | null> => {
     return Case.findByPk(caseId);
@@ -41,7 +42,7 @@ const getCase = (caseId: string): Promise<Model | null> => {
  * @param caseId, the id of the case. Id must be a string
  * @param medicalCase, the data of the medical case
  * @param fields, the fields that should be updated
- * @return Promise<Model[]>
+ * @returns Promise<Model[]>
  */
 const updateCase = (caseId: string, medicalCase: UpdateMedicalCase, fields: string[]): Promise<[number, Model[]]> => {
     return Case.update(
@@ -60,7 +61,7 @@ const updateCase = (caseId: string, medicalCase: UpdateMedicalCase, fields: stri
 /**
  * Deletes a specified medical case
  * @param caseId, the id of the case. Id must be a string
- * @return Promise<number>
+ * @returns Promise<number>
  */
 const deleteCase = (caseId: string): Promise<number> => {
     return Case.destroy(
@@ -75,7 +76,7 @@ const deleteCase = (caseId: string): Promise<number> => {
 /**
  * Creates a new medical case and returns it
  * @param medicalCase, the data of the medical case
- * @return Promise<Model>
+ * @returns Promise<Model>
  */
 const createCase = (medicalCase: MedicalCase): Promise<Model> => {
     if (medicalCase.caseId || medicalCase.caseId === undefined) { delete medicalCase.caseId; }

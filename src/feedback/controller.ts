@@ -10,7 +10,12 @@ import { Factor } from '../types/factor';
 import { updateCase } from '../case/model';
 import { createFactor } from '../factor/model';
 
-const getOneFeedbackAction = (request, response): void => {
+/**
+ * Function to resolve a query for a specified feedback
+ * @param request, the express request property
+ * @param response, the express response property
+ */
+const getFeedbackAction = (request, response): void => {
     const feedbackId = request.params.id;
     getFeedback(feedbackId).then(
         feedback => {
@@ -30,6 +35,11 @@ const getOneFeedbackAction = (request, response): void => {
     );
 };
 
+/**
+ * Function to resolve a query to create a new feedback
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const postFeedbackAction = (request, response): void => {
     const userId = request.user;
     const caseId = request.body.caseId;
@@ -63,6 +73,11 @@ const postFeedbackAction = (request, response): void => {
     );
 };
 
+/**
+ * Function to resolve a query to update a specified feedback object
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const updateFeedbackAction = (request, response): void => {
     const userId = request.user;
     const feedbackId = request.params.id;
@@ -87,7 +102,7 @@ const updateFeedbackAction = (request, response): void => {
 };
 
 export {
-    getOneFeedbackAction,
+    getFeedbackAction,
     postFeedbackAction,
     updateFeedbackAction
 };

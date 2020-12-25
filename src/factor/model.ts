@@ -1,24 +1,44 @@
 import { Factor } from '../data_models/model';
-import { Op } from 'sequelize';
+import { Model, Op } from 'sequelize';
 import { Factor as F } from '../types/factor';
 
-const getFactor = (factorId: string) => {
+/**
+ * Finds and returns a factor by the specified id
+ * @param factorId, id of the factor. Id must be a string
+ * @returns Promise<Model | null>
+ */
+const getFactor = (factorId: string): Promise<Model | null> => {
     return Factor.findByPk(factorId);
 };
 
-const getFactorsOfQuestionnaire = (questionnaireId: string) => {
+/**
+ * Finds and returns all factors of a specified questionnaire
+ * @param questionnaireId, id of a questionnaire. Id must be a string
+ * @returns Promise<Model[]>
+ */
+const getFactorsOfQuestionnaire = (questionnaireId: string): Promise<Model[]> => {
     return Factor.findAll({
         where: { questionnaire: questionnaireId }
     });
 };
 
-const getFactorsOfFeedback = (feedbackId: string) => {
+/**
+ * Finds and returns all factors of a specified feedback
+ * @param feedbackId, id of feedback. Id must be a string
+ * @returns Promise<Model[]>
+ */
+const getFactorsOfFeedback = (feedbackId: string): Promise<Model[]> => {
     return Factor.findAll({
         where: { feedback: feedbackId }
     });
 };
 
-const createFactor = (factor: F) => {
+/**
+ * Creates a new factor and returns it
+ * @param factor, the data of the factor
+ * @returns Promise<Model>
+ */
+const createFactor = (factor: F): Promise<Model> => {
     if (factor.factorId || factor.factorId === undefined) { delete factor.factorId; }
     return Factor.create({ ...factor });
 };

@@ -1,12 +1,15 @@
 import { Router } from 'express';
 import {
-    getOneQuestionnaireAction,
-    createQuestionnaireAction
+    getQuestionnaireAction,
+    postQuestionnaireAction
 } from './controller';
 
+/**
+ * Questionnaire router which doesn't need a token
+ */
 const questionnaireRouter = new Router();
 
-questionnaireRouter.get('/:id', getOneQuestionnaireAction);
-questionnaireRouter.post('/', createQuestionnaireAction);
+questionnaireRouter.get('/:id', getQuestionnaireAction);
+questionnaireRouter.post('/', postQuestionnaireAction);
 
 export { questionnaireRouter };

@@ -7,6 +7,9 @@ const sequelize = new Sequelize({
 });
 
 // Models of Tables
+/**
+ * Object Relation Model of Medical Case
+ */
 const Case = sequelize.define(
     'Case',
     {
@@ -44,6 +47,9 @@ const Case = sequelize.define(
     }
 );
 
+/**
+ * Object Relation Model of Questionnaire
+ */
 const Questionnaire = sequelize.define(
     'Questionnaire',
     {
@@ -86,6 +92,9 @@ const Questionnaire = sequelize.define(
     }
 );
 
+/**
+ * Object Relation Model of Employee
+ */
 const Employee = sequelize.define(
     'Employee',
     {
@@ -114,6 +123,9 @@ const Employee = sequelize.define(
     }
 );
 
+/**
+ * Object Relation Model of Classification
+ */
 const Classification = sequelize.define(
     'Classification',
     {
@@ -132,6 +144,9 @@ const Classification = sequelize.define(
     }
 );
 
+/**
+ * Object Relation Model of Feedback
+ */
 const Feedback = sequelize.define(
     'Feedback',
     {
@@ -153,6 +168,9 @@ const Feedback = sequelize.define(
     }
 );
 
+/**
+ * Object Relation Model of Factor
+ */
 const Factor = sequelize.define(
     'Factor',
     {

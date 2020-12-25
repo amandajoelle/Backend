@@ -5,7 +5,13 @@ import {
     getFactorsOfFeedback
 } from './model';
 
-const listFactorsOfQuestionnaire = (request, response) => {
+/**
+ * Function to resolve a query for all factors of one specified
+ * questionnaire
+ * @param request, the express request property
+ * @param response, the express response property
+ */
+const listFactorsOfQuestionnaireAction = (request, response): void => {
     const questionnaireId = request.params.id;
     getFactorsOfQuestionnaire(questionnaireId).then(
         factors => {
@@ -25,7 +31,13 @@ const listFactorsOfQuestionnaire = (request, response) => {
     );
 };
 
-const listFactorsOfFeedback = (request, response) => {
+/**
+ * Function to resolve a query for all factors of one specified
+ * feedback
+ * @param request, the express request property
+ * @param response, the express response property
+ */
+const listFactorsOfFeedbackAction = (request, response): void => {
     const feedbackId = request.params.id;
     getFactorsOfFeedback(feedbackId).then(
         factors => {
@@ -45,7 +57,12 @@ const listFactorsOfFeedback = (request, response) => {
     );
 };
 
-const fetchFactor = (request, response) => {
+/**
+ * Function to resolve a query to get a specified factor
+ * @param request, the express request property
+ * @param response, the express response property
+ */
+const getFactorAction = (request, response): void => {
     const factorId = request.params.id;
     getFactor(factorId).then(
         factor => {
@@ -66,7 +83,7 @@ const fetchFactor = (request, response) => {
 };
 
 export {
-    listFactorsOfFeedback,
-    listFactorsOfQuestionnaire,
-    fetchFactor
+    listFactorsOfFeedbackAction,
+    listFactorsOfQuestionnaireAction,
+    getFactorAction
 };

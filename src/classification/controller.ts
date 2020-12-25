@@ -7,6 +7,11 @@ import {
 import { classificationFactory } from '../helper/factory';
 import { updateCase } from '../case/model';
 
+/**
+ * Function to resolve a query for an specified classification object
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const getClassificationAction = (request, response): void => {
     const classificationId = request.params.id;
 
@@ -28,6 +33,11 @@ const getClassificationAction = (request, response): void => {
     );
 };
 
+/**
+ * Function to resolve a query to create a new classification object
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const postClassificationAction = (request, response): void => {
     const userId = request.user;
     const caseId = request.body.caseId;
@@ -56,6 +66,11 @@ const postClassificationAction = (request, response): void => {
     );
 };
 
+/**
+ * Function to resolve a query to update a specified classification object
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const putClassificationAction = (request, response): void => {
     const userId = request.user;
     const classificationId = request.params.id;

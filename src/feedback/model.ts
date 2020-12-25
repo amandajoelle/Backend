@@ -1,19 +1,36 @@
 import { Factor, Feedback } from '../data_models/model';
-import { Op } from 'sequelize';
+import { Model, Op } from 'sequelize';
 import { Feedback as FeedbackInterface } from '../types/feedback';
 
-const getFeedback = (feedbackId: string) => {
+/**
+ * Finds and returns a specified feedback by id
+ * @param feedbackId, id of the feedback object. Id must be a string
+ * @returns Promise<Model | null>
+ */
+const getFeedback = (feedbackId: string): Promise<Model | null> => {
     return Feedback.findByPk(feedbackId, { include: { model: Factor } });
 };
 
-const createFeedback = (feedback: FeedbackInterface) => {
+/**
+ * Creates a new feedback object and returns it
+ * @param feedback, the data of the feedback object
+ * @returns Promise<Model>
+ */
+const createFeedback = (feedback: FeedbackInterface): Promise<Model> => {
     if (feedback.feedbackId || feedback.feedbackId === undefined) { delete feedback.feedbackId; }
     return Feedback.create({
         ...feedback
     });
 };
 
-const updateFeedback = (feedbackId: string, feedback: FeedbackInterface, fields: string[]) => {
+/**
+ * Updates a feedback object at the specified fields
+ * @param feedbackId, the id of the feedback object. Id must be a string
+ * @param feedback, the data of the feedback object
+ * @param fields, the fields that should be updated
+ * @returns Promise<[number, Model[]]>
+ */
+const updateFeedback = (feedbackId: string, feedback: FeedbackInterface, fields: string[]): Promise<[number, Model[]]> => {
     return Feedback.update(
         {
             ...feedback

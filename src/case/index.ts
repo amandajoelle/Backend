@@ -6,7 +6,13 @@ import {
     updateCaseAction
 } from './controller';
 
+/**
+ * Medical case router which doesn't need a token
+ */
 const caseRouter = new Router();
+/**
+ * Medical case router which needs a token (jwt) to pass
+ */
 const safeCaseRouter = new Router();
 
 caseRouter.get('/done/', listDoneAction);

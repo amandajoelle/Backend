@@ -8,7 +8,7 @@ import {
 import { caseFactory } from '../helper/factory';
 
 /**
- *
+ * Function to resolve a query for all done medical cases
  * @param request, the express request property
  * @param response, the express response property
  */
@@ -31,13 +31,18 @@ const listDoneAction = (request, response): void => {
     );
 };
 
+/**
+ * Function to resolve a query for all incomplete medical cases
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const listIncompleteAction = (request, response): void => {
     const userId = request.user;
     getAllIncompleteCases(userId).then(
         cases => {
             response.format({
                 xml() {
-                    response.send(jsonXml(cases.map(c => ({ c }))));
+                    response.send(jsonXml(cases));
                 },
                 json() {
                     response.json(cases);
@@ -51,6 +56,11 @@ const listIncompleteAction = (request, response): void => {
     );
 };
 
+/**
+ * Function to resolve a query for an specified medical case
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const getCaseAction = (request, response) => {
     const caseId = request.params.id;
     getCase(caseId).then(
@@ -71,6 +81,11 @@ const getCaseAction = (request, response) => {
     );
 };
 
+/**
+ * Function to resolve a query to update an specified medical case
+ * @param request, the express request property
+ * @param response, the express response property
+ */
 const updateCaseAction =(request, response) => {
     const caseId = request.params.id;
     const userId = request.user;

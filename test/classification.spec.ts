@@ -35,7 +35,7 @@ describe('classification', () => {
             .send(classificationPost)
             .set('Accept', 'application/json')
             .set('Conent-Type', 'application/json');
-        expect(response.status).toBe(200);
+        expect(response.status).toBe(201);
         expect(response.body).toMatchObject({ class_id: expect.any(String) });
     })
 

@@ -17,7 +17,7 @@ const listFactorsOfQuestionnaireAction = (request, response): void => {
         factors => {
             response.format({
                 xml() {
-                    response.send(jsonXml(factors.map(factor => ({ factor }))));
+                    response.send(jsonXml(factors.map(factor => ({ ...factor }))));
                 },
                 json() {
                     response.json(factors);
@@ -43,7 +43,7 @@ const listFactorsOfFeedbackAction = (request, response): void => {
         factors => {
             response.format({
                 xml() {
-                    response.send(jsonXml(factors.map(factor => ({ factor }))));
+                    response.send(jsonXml(factors.map(factor => ({ ...factor }))));
                 },
                 json() {
                     response.json(factors);
@@ -68,7 +68,7 @@ const getFactorAction = (request, response): void => {
         factor => {
             response.format({
                 xml() {
-                    response.send(jsonXml({ factor }));
+                    response.send(jsonXml(factor.toJSON()));
                 },
                 json() {
                     response.json(factor);

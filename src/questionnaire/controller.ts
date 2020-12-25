@@ -21,7 +21,7 @@ const getQuestionnaireAction = (request, response): void => {
         questionnaire => {
             response.format({
                 xml() {
-                    response.send(jsonXml(questionnaire));
+                    response.send(jsonXml(questionnaire.toJSON()));
                 },
                 json() {
                     response.json(questionnaire);
@@ -58,13 +58,13 @@ const postQuestionnaireAction = (request, response) => {
 
             response.format({
                 xml() {
-                    response.send(jsonXml({questionnaire}));
+                    response.status(201).send(jsonXml(questionnaire.toJSON()));
                 },
                 json() {
-                    response.json(questionnaire);
+                    response.status(201).json(questionnaire);
                 },
                 default() {
-                    response.json(questionnaire);
+                    response.status(201).json(questionnaire);
                 }
             });
         },

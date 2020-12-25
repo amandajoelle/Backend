@@ -19,7 +19,7 @@ const getClassificationAction = (request, response): void => {
         classification => {
             response.format({
                 xml() {
-                    response.send(jsonXml({ classification }));
+                    response.send(jsonXml(classification.toJSON()));
                 },
                 json() {
                     response.json(classification);
@@ -52,13 +52,13 @@ const postClassificationAction = (request, response): void => {
                 .then(c => c);
             response.format({
                 xml() {
-                    response.send(jsonXml({ classification }));
+                    response.status(201).send(jsonXml(classification.toJSON()));
                 },
                 json() {
-                    response.json(classification);
+                    response.status(201).json(classification);
                 },
                 default() {
-                    response.json(classification);
+                    response.status(201).json(classification);
                 }
             });
         },
@@ -80,7 +80,7 @@ const putClassificationAction = (request, response): void => {
         classification => {
             response.format({
                 xml() {
-                    response.send(jsonXml({ classification }));
+                    response.send(jsonXml(classification[0]));
                 },
                 json() {
                     response.json(classification);

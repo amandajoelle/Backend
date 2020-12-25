@@ -21,7 +21,7 @@ const getFeedbackAction = (request, response): void => {
         feedback => {
             response.format({
                 xml() {
-                    response.send(jsonXml({ feedback }));
+                    response.send(jsonXml(feedback.toJSON()));
                 },
                 json() {
                     response.json(feedback);
@@ -59,13 +59,13 @@ const postFeedbackAction = (request, response): void => {
             });
             response.format({
                 xml() {
-                    response.send(jsonXml({ feedback }));
+                    response.status(201).send(jsonXml(feedback.toJSON()));
                 },
                 json() {
-                    response.json(feedback);
+                    response.status(201).json(feedback);
                 },
                 default() {
-                    response.json(feedback);
+                    response.status(201).json(feedback);
                 }
             });
         },
@@ -87,7 +87,7 @@ const updateFeedbackAction = (request, response): void => {
         feedback => {
             response.format({
                 xml() {
-                    response.send(jsonXml({ feedback }));
+                    response.send(jsonXml(feedback[0]));
                 },
                 json() {
                     response.json(feedback);

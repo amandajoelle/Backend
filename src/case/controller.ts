@@ -17,7 +17,7 @@ const listDoneAction = (request, response): void => {
         cases => {
             response.format({
                 xml() {
-                    response.send(jsonXml(cases.map(c => ({ c }))));
+                    response.send(jsonXml(cases.map(c => ({ ...c }))));
                 },
                 json() {
                     response.json(cases);
@@ -42,7 +42,7 @@ const listIncompleteAction = (request, response): void => {
         cases => {
             response.format({
                 xml() {
-                    response.send(jsonXml(cases));
+                    response.send(jsonXml(cases.map(c => ({ ...c }))));
                 },
                 json() {
                     response.json(cases);
@@ -67,7 +67,7 @@ const getCaseAction = (request, response) => {
         c => {
             response.format({
                 xml() {
-                    response.send(jsonXml(c));
+                    response.send(jsonXml(c.toJSON()));
                 },
                 json() {
                     response.json(c);
@@ -96,7 +96,7 @@ const updateCaseAction =(request, response) => {
         c => {
             response.format({
                 xml() {
-                    response.send(jsonXml({ c }));
+                    response.send(jsonXml(c[0]));
                 },
                 json() {
                     response.json(c);

@@ -2,7 +2,8 @@ import { Router } from 'express';
 import {
     listFactorsOfFeedbackAction,
     listFactorsOfQuestionnaireAction,
-    getFactorAction
+    getFactorAction,
+    updateFactorAction
 } from './controller';
 
 /**
@@ -13,5 +14,6 @@ const factorRouter = new Router();
 factorRouter.get('/feedback/:id', listFactorsOfFeedbackAction);
 factorRouter.get('/questionnaire/:id', listFactorsOfQuestionnaireAction);
 factorRouter.get('/:id', getFactorAction);
+factorRouter.put('/:id', updateFactorAction);
 
 export { factorRouter };

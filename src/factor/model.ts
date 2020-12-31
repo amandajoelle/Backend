@@ -43,9 +43,31 @@ const createFactor = (factor: F): Promise<Model> => {
     return Factor.create({ ...factor });
 };
 
+/**
+ * Updates a factor object at the specified fields
+ * @param factorId, the id of the factor object. Id must be a string
+ * @param factor, the data of the factor object
+ * @param fields, the fields that should be updated
+ * @returns Promise<Model>
+ */
+const updateFactor = (factorId: string, factor: F, fields: string[]): Promise<[number, Model[]]> => {
+    return Factor.update(
+        {
+            ...factor
+        },
+        {
+            where: {
+                factor_id: factorId
+            },
+            fields
+        }
+    );
+};
+
 export {
     getFactor,
     getFactorsOfFeedback,
     getFactorsOfQuestionnaire,
-    createFactor
+    createFactor,
+    updateFactor
 };

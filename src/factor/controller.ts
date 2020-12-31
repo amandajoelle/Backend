@@ -2,8 +2,10 @@ import * as jsonXml from 'jsontoxml';
 import {
     getFactor,
     getFactorsOfQuestionnaire,
-    getFactorsOfFeedback
+    getFactorsOfFeedback,
+    updateFactor
 } from './model';
+import {factorFactory} from "../helper/factory";
 
 /**
  * Function to resolve a query for all factors of one specified
@@ -82,8 +84,31 @@ const getFactorAction = (request, response): void => {
     );
 };
 
+const updateFactorAction = (request, response): void => {
+    const factorId = request.params.id;
+    const factorUpdate = factorFactory(request);
+
+    updateFactor(factorId, factorUpdate, Object.keys(factorUpdate)).then(
+        factor => {
+            response.format({
+                xml() {
+                    response.send(jsonXml(factor[0]));
+                },
+                json() {
+                    response.json(factor);
+                },
+                default() {
+                    response.json(factor);
+                }
+            });
+        },
+        error => response.status(500).json(error)
+    );
+};
+
 export {
     listFactorsOfFeedbackAction,
     listFactorsOfQuestionnaireAction,
-    getFactorAction
+    getFactorAction,
+    updateFactorAction
 };

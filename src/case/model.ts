@@ -1,4 +1,4 @@
-import { Case } from '../data_models/model';
+import { Case, Employee } from '../data_models/model';
 import { Model, Op } from 'sequelize';
 import { MedicalCase, UpdateMedicalCase } from '../types/medical_case';
 
@@ -23,7 +23,8 @@ const getAllIncompleteCases = (userId: string): Promise<Model[]> => {
     return Case.findAll({
         where: {
             [Op.or]: [{ editor: null }, { editor: userId }]
-        }
+        },
+        include: { model: Employee }
     })
 };
 

@@ -22,7 +22,8 @@ const getAllDoneCases = (): Promise<Model[]> => {
 const getAllIncompleteCases = (userId: string): Promise<Model[]> => {
     return Case.findAll({
         where: {
-            [Op.or]: [{ editor: null }, { editor: userId }]
+            [Op.or]: [{ editor: null }, { editor: userId }],
+            [Op.not]: [{ status: 'erledigt' }]
         },
         include: { model: Employee }
     })
